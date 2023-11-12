@@ -16,8 +16,6 @@ class MealReader
         $result = file_get_contents('https://www.themealdb.com/api/json/v1/1/random.php');
         $randomMeal = json_decode($result, true);
 
-        var_dump($randomMeal);
-
         return new Meal(
             $randomMeal['meals'][0]['idMeal'],
             $randomMeal['meals'][0]['strMeal'],
