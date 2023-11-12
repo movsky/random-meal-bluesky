@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e077926b0d83c217ece524f4a3d61fa8",
+    "content-hash": "96f89a2b225e2ee794085349302a8790",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -1487,6 +1487,40 @@
                 }
             ],
             "time": "2023-10-27T15:32:31+00:00"
+        },
+        {
+            "name": "mov/php-bluesky",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/movsky/bluesky-api-php.git",
+                "reference": "b10bdf5fdbc2067b2a009918f128886f11abc5ef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/movsky/bluesky-api-php/zipball/b10bdf5fdbc2067b2a009918f128886f11abc5ef",
+                "reference": "b10bdf5fdbc2067b2a009918f128886f11abc5ef",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/http-client": "^6.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mov\\BlueskyApi\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A simple php api client for bluesky",
+            "support": {
+                "issues": "https://github.com/movsky/bluesky-api-php/issues",
+                "source": "https://github.com/movsky/bluesky-api-php/tree/0.1.0"
+            },
+            "time": "2023-11-11T11:05:57+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
