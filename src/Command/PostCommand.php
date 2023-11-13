@@ -63,7 +63,7 @@ class PostCommand extends Command
     private function getSkeet(Meal $meal): string
     {
         $skeet = '🍽 ' . $meal->getTitle() . PHP_EOL;
-        $skeet .= '🏷 ' . $meal->getCategory() . PHP_EOL;
+        $skeet .= '🔠 ' . $meal->getCategory() . PHP_EOL;
         $skeet .= '🌍 ' . $meal->getArea();
         $skeet .= PHP_EOL . PHP_EOL;
         if (null !== $meal->getSource()) {
