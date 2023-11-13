@@ -3,6 +3,7 @@
 namespace App\Command;
 
 use App\Service\MealManager\MealManager;
+use App\Service\MealReader\Meal;
 use Mov\BlueskyApi\BlueskyApi;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
@@ -50,19 +51,24 @@ class PostCommand extends Command
             return Command::SUCCESS;
         }
 
-        $skeet = $meal->getTitle() . ' | ' . $meal->getCategory() . ' | ' . $meal->getArea();
-        $skeet .= PHP_EOL . PHP_EOL;
-        $skeet .= $meal->getSource();
-
         $responseJson = $this->blueskyApi->uploadBlob(file_get_contents($meal->getImage()), mime_content_type($meal->getImage()));
         $response = json_decode($responseJson, true);
-        $this->blueskyApi->post($skeet, $this->buildEmbed($response['blob']), ['en']);
+        $this->blueskyApi->post($this->getSkeet($meal), $this->buildEmbed($response['blob']), ['en']);
 
         unlink($meal->getImage());
 
         return Command::SUCCESS;
     }
 
+    private function getSkeet(Meal $meal): string
+    {
+        $skeet = $meal->getTitle() . ' | ' . $meal->getCategory() . ' | ' . $meal->getArea();
+        $skeet .= PHP_EOL . PHP_EOL;
+        if (null !== $meal->getSource()) {
+            $skeet .= $meal->getSource();
+        }
+        return $skeet;
+    }
 
     private function buildEmbed(array $image): array
     {
