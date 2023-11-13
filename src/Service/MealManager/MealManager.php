@@ -15,21 +15,7 @@ class MealManager
 
     public function getMeal(): ?Meal
     {
-        $meal = $this->mealReader->getRandom();
-
-        /*
-        $log = $this->feedLogger->getLogAsArray();
-
-        if (in_array($news->getId(), $log)) {
-            $this->removeCurrentFeed();
-
-            return $this->getMeal();
-        }
-
-        $this->feedLogger->log($news->getId());
-        */
-
-        return $meal;
+        return $this->mealReader->getRandom();
     }
 
 }

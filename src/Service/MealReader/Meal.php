@@ -11,7 +11,7 @@ class Meal
         private readonly string $category,
         private readonly string $area,
         private readonly string $image,
-        private readonly string $source,
+        private readonly ?string $source,
     ) {
     }
 
@@ -40,7 +40,7 @@ class Meal
         return $this->image;
     }
 
-    public function getSource(): string
+    public function getSource(): ?string
     {
         return $this->source;
     }
