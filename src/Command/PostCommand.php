@@ -53,7 +53,7 @@ class PostCommand extends Command
 
         $responseJson = $this->blueskyApi->uploadBlob(file_get_contents($meal->getImage()), mime_content_type($meal->getImage()));
         $response = json_decode($responseJson, true);
-        $this->blueskyApi->post($this->getSkeet($meal), $this->buildEmbed($response['blob']), ['en']);
+        $this->blueskyApi->post($this->getSkeet($meal), $this->buildEmbed($response['blob'], $meal->getTitle()), ['en']);
 
         unlink($meal->getImage());
 
@@ -72,18 +72,17 @@ class PostCommand extends Command
         return $skeet;
     }
 
-    private function buildEmbed(array $image): array
+    private function buildEmbed(array $image, string $alt): array
     {
         return [
             '$type' => 'app.bsky.embed.images',
             'images' => [
                 [
-                    'alt' => 'A test image',
+                    'alt' => $alt,
                     'image' => $image,
                 ],
             ]
         ];
     }
-
 
 }
