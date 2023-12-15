@@ -3,8 +3,9 @@
 namespace App\Service\MealManager;
 
 use App\Service\Logger\Logger;
+use App\Service\MealReader\MealReaderFactory;
 use App\Service\MealReader\Meal;
-use App\Service\MealReader\MealReader;
+use App\Service\MealReader\SpoonacularReader;
 
 class MealManager
 {
@@ -14,13 +15,14 @@ class MealManager
     private int $attemptsCounter = 0;
 
     public function __construct(
-        private readonly MealReader $mealReader,
-        private readonly Logger $logger
+        private readonly MealReaderFactory $mealReaderFactory,
+        private readonly Logger            $logger
     ) {}
 
     public function getMeal(): ?Meal
     {
-        $meal = $this->mealReader->getRandom();
+        $mealReader = $this->mealReaderFactory->createByClassName(SpoonacularReader::class);
+        $meal = $mealReader->getRandom();
         $log = $this->logger->getLogAsArray();
 
         if (in_array($meal->getId(), $log) && $this->attemptsCounter < self::MAX_ATTEMPTS) {
