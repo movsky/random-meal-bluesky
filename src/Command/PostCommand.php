@@ -64,8 +64,24 @@ class PostCommand extends Command
     {
         $skeet = '🍽 ' . $meal->getTitle() . PHP_EOL;
         $skeet .= '🔠 ' . $meal->getCategory() . PHP_EOL;
-        $skeet .= '🌍 ' . $meal->getArea();
-        $skeet .= PHP_EOL . PHP_EOL;
+
+        if (null !== $meal->getArea()) {
+            $skeet .= '🌍 ' . $meal->getArea() . PHP_EOL;
+        }
+
+        if ($meal->isVegan() || $meal->isVegetarian()) {
+            $skeet .= '🌱 ';
+            if ($meal->isVegan()) {
+                $skeet .= 'vegan';
+            }
+            elseif ($meal->isVegetarian()) {
+                $skeet .= 'vegetarian';
+            }
+            $skeet .= PHP_EOL;
+        }
+
+        $skeet .= PHP_EOL;
+
         if (null !== $meal->getSource()) {
             $skeet .= $meal->getSource();
         }

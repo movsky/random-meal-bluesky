@@ -27,3 +27,7 @@ services:
         arguments:
             $user: '%env(string:BLUESKY_USER)%'
             $password: '%env(string:BLUESKY_PASSWORD)%'
+
+    App\Service\MealReader\MealReaderFactory:
+        arguments:
+            $spoonacularApiKey: '%env(string:SPOONACULAR_API_KEY)%'

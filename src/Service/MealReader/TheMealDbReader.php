@@ -4,7 +4,7 @@ namespace App\Service\MealReader;
 
 use App\Service\ImageDownloader\ImageDownloader;
 
-class MealReader
+class TheMealDbReader implements MealReaderInterface
 {
 
     public function __construct(private readonly ImageDownloader $imageDownloader)
