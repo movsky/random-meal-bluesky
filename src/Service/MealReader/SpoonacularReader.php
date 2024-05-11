@@ -22,7 +22,7 @@ class SpoonacularReader implements MealReaderInterface
             $randomMeal['recipes'][0]['title'],
             implode(', ', $randomMeal['recipes'][0]['dishTypes']),
             null,
-            $this->imageDownloader->download($randomMeal['recipes'][0]['image']),
+            isset($randomMeal['recipes'][0]['image']) ? $this->imageDownloader->download($randomMeal['recipes'][0]['image']) : '',
             $randomMeal['recipes'][0]['sourceUrl'],
             $randomMeal['recipes'][0]['vegan'],
             $randomMeal['recipes'][0]['vegetarian'],
